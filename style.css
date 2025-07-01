@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(93, 255, 18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    color: rgba(68, 70, 0, 0.957);
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+}
+
+.winner{
+    
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    color: rgba(68, 70, 0, 0.957);
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 20px 0;
+    padding: 40px 30px;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(163, 255, 59);
+    box-shadow: 1px 1px 15px black;
+    border-radius: 15px;
+
+}
+.reset{
+    background-color: #6af83f;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: rgb(255, 0, 0);
+    font-weight: 500;
+    border: 0.5px solid black;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.reset:active{
+    background-color: #bdfb4b;
+    color: rgba(0, 0, 0, 0.482);
+    transition: 0.25s;
+}
+
+.gameContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 440px;
+    height: 440px;
+    gap: 10px;
+    transform-style: preserve-3d ;
+    perspective: 500px;
+    bottom: 30px;
+}
+.card{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    transition: 0.25s;
+    transform: rotateY(180deg);
+    cursor: pointer;
+    
+}
+
+.card.cardOpen{
+    transform: rotateY(0deg);
+}
+
+.card::after{
+    content: '' ;
+    inset: 0 ;
+    position: absolute;
+    background: #658b20;
+    border-radius: 10px;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+}
+.cardOpen:after,.cardMatch:after{
+    transform: rotateY(180deg);
+        backface-visibility: hidden;
+
+}
+.cardMatch{
+    pointer-events: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+    .container{
+        position: relative;
+        display: flex;
+        width: 370px;
+        height: 600px;
+
+    }
+
+    .gameContainer{
+        
+        width: 360px;
+        height: 400;
+    }
+
+    .card{
+        width: 74px;
+        height: 74px;
+
+
+    }
+    h1{
+        font-size: 36px;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="winMessage">Memory Game</h1>
+        <div id="gameBoard" class="gameContainer">
+        </div>
+        <button onclick="window.location.reload()" id="restartButton" class="reset">Restart Game</button>
+    </div>
+    <script>
+
+
+
+        const elements = ["😃", "😃", "😆", "😆", "🤣", "🤣", "😍", "😍", "🤫", "🤫", "🤩", "🤩", "🤐", "🤐", "🤒", "🤒"]
+        let shuffledElement = elements.sort(() => (Math.random() > .5) ? 2 : -1)
+        for (let i = 0; i < elements.length; i++) {
+            let card = document.createElement('div')
+            card.className = ('card')
+            card.innerHTML = shuffledElement[i]
+            card.onclick = function () {
+                this.classList.add('cardOpen')
+
+                
+                setTimeout(function () {
+                    
+                         if (document.querySelectorAll('.cardOpen').length > 1) {
+                        if (document.querySelectorAll('.cardOpen')[0].innerHTML == document.querySelectorAll('.cardOpen')[1].innerHTML) {
+                            document.querySelectorAll('.cardOpen')[0].classList.add('cardMatch')
+                            document.querySelectorAll('.cardOpen')[1].classList.add('cardMatch')
+                            document.querySelectorAll('.cardOpen')[1].classList.remove('cardOpen')
+                            document.querySelectorAll('.cardOpen')[0].classList.remove('cardOpen')
+                            document.querySelectorAll('.cardOpen')[0].style
+                        }
+                        if (document.querySelectorAll('.cardMatch').length == elements.length) {
+                            document.querySelector('#winMessage').innerHTML = 'You Won🥳'
+                            alert('YOU WON')
+
+
+                        }
+                        else {
+                            document.querySelectorAll('.cardOpen')[1].classList.remove('cardOpen')
+                            document.querySelectorAll('.cardOpen')[0].classList.remove('cardOpen')
+                        }
+                    }
+                }, 500)
+            }
+
+            document.querySelector('#gameBoard').appendChild(card)
+        }
+
+
+        
+    </script>
+</body>
+
+</html>
