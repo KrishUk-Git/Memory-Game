@@ -21,8 +21,8 @@ h1 {
     text-transform: uppercase;
 }
 
-.winner{
-    
+#winMessage{
+    display: none;
     text-align: center;
     font-size: 48px;
     font-weight: 600;

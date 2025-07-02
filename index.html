@@ -13,9 +13,10 @@
 
 <body>
     <div class="container">
-        <h1 id="winMessage">Memory Game</h1>
+        <h1>Memory Game</h1>
         <div id="gameBoard" class="gameContainer">
         </div>
+        <p id="winMessage">You Won</p>
         <button onclick="window.location.reload()" id="restartButton" class="reset">Restart Game</button>
     </div>
     <script>
@@ -27,24 +28,24 @@
         for (let i = 0; i < elements.length; i++) {
             let card = document.createElement('div')
             card.className = ('card')
+            
             card.innerHTML = shuffledElement[i]
-            card.onclick = function () {
+            card.addEventListener("click",function(){
                 this.classList.add('cardOpen')
 
                 
                 setTimeout(function () {
                     
                          if (document.querySelectorAll('.cardOpen').length > 1) {
-                        if (document.querySelectorAll('.cardOpen')[0].innerHTML == document.querySelectorAll('.cardOpen')[1].innerHTML) {
-                            document.querySelectorAll('.cardOpen')[0].classList.add('cardMatch')
-                            document.querySelectorAll('.cardOpen')[1].classList.add('cardMatch')
-                            document.querySelectorAll('.cardOpen')[1].classList.remove('cardOpen')
-                            document.querySelectorAll('.cardOpen')[0].classList.remove('cardOpen')
-                            document.querySelectorAll('.cardOpen')[0].style
-                        }
-                        if (document.querySelectorAll('.cardMatch').length == elements.length) {
-                            document.querySelector('#winMessage').innerHTML = 'You Won🥳'
-                            alert('YOU WON')
+                             if (document.querySelectorAll('.cardOpen')[0].innerHTML == document.querySelectorAll('.cardOpen')[1].innerHTML) {
+                                 document.querySelectorAll('.cardOpen')[0].classList.add('cardMatch')
+                                 document.querySelectorAll('.cardOpen')[1].classList.add('cardMatch')
+                                 document.querySelectorAll('.cardOpen')[1].classList.remove('cardOpen')
+                                 document.querySelectorAll('.cardOpen')[0].classList.remove('cardOpen')
+                                }
+                                if (document.querySelectorAll('.cardMatch').length == elements.length) {
+                                    document.getElementById('winMessage').style.display='block'
+                                    alert('YOU WON')
 
 
                         }
@@ -54,8 +55,8 @@
                             document.querySelectorAll('.cardOpen')[0].classList.remove('cardOpen')
                         }
                     }
-                }, 1000)
-            }
+                }, 500)
+            })
 
             document.querySelector('#gameBoard').appendChild(card)
         }
